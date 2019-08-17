@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
         margin: auto;
       }
       .main {
-        background-color:white;      
+        background-color:white;
       }
     `],
     template: `
