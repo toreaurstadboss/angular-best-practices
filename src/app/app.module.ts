@@ -9,16 +9,17 @@ import { AppComponent } from "./app.component";
 import { CatalogComponent } from "./catalog/catalog.component";
 import { RegisterComponent } from "./users/register.component";
 import { SignInComponent } from "./users/sign-in.component";
-import { LoadingSpinnerComponent } from "./components/loading-spinner.component";
 import { UserRepositoryService } from "./services/user-repository.services";
 import { CatalogRepositoryService } from "./catalog/catalog-repository.service";
 import { CoreModule } from "./core/core.module";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
     CoreModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
@@ -27,8 +28,7 @@ import { CoreModule } from "./core/core.module";
     AppComponent,
     CatalogComponent,
     RegisterComponent,
-    SignInComponent,
-    LoadingSpinnerComponent
+    SignInComponent
   ],
   providers: [UserRepositoryService, CatalogRepositoryService],
   bootstrap: [AppComponent]
