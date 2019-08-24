@@ -15,7 +15,7 @@ export class CatalogRepositoryService {
     // debugger;
     const subject = new Subject<any>();
     const currentUser = this.userRepositoryService.currentUser || {classes:[]};
-    const catalogWithEnrollmentStatus = COURSE_CATALOG.map(catalogClass => {
+    const catalogWithEnrollmentStatus = courseCatalog.map(catalogClass => {
       let enrolled = {
         enrolled: this.userRepositoryService.currentUser.classes.includes(catalogClass.classId)
       };
@@ -30,7 +30,7 @@ export class CatalogRepositoryService {
   }
 }
 
-export const COURSES = [
+export const courses = [
   {
     courseNumber: "PO101",
     courseName: "Intro to Potions",
@@ -69,10 +69,11 @@ export const COURSES = [
   }
 ];
 
-const COURSE_CATALOG = [
+
+const courseCatalog = [
   {
     classId: "24ab7b14-f935-44c1-b91b-8598123ea54a",
-    course: COURSES[0],
+    course: courses[0],
     professor: "Abramius Darksbayn",
     seatsAvailable: 23,
     days: "MWF",
@@ -80,7 +81,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "cebbc5ba-f49a-4708-b3dc-51a346b3231e",
-    course: COURSES[0],
+    course: courses[0],
     professor: "Philosifus Siebrand",
     seatsAvailable: 9,
     days: "MWF",
@@ -88,7 +89,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "6130cdd4-071a-4559-8072-35f0fbec5516",
-    course: COURSES[0],
+    course: courses[0],
     professor: "Abramius Darksbayn",
     seatsAvailable: 14,
     days: "THF",
@@ -96,7 +97,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "dd0343e9-50b2-4f1d-8b87-93c0b34f3d35",
-    course: COURSES[1],
+    course: courses[1],
     professor: "Antonia Clavell",
     seatsAvailable: 28,
     days: "THF",
@@ -104,7 +105,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
-    course: COURSES[2],
+    course: courses[2],
     professor: "Meriel Dufaux",
     seatsAvailable: 28,
     days: "THF",
@@ -112,7 +113,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
-    course: COURSES[3],
+    course: courses[3],
     professor: "Adranus Klaus",
     seatsAvailable: 28,
     days: "THF",
@@ -120,7 +121,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
-    course: COURSES[4],
+    course: courses[4],
     professor: "Ragnvald Graupnar",
     seatsAvailable: 28,
     days: "THF",
@@ -128,7 +129,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
-    course: COURSES[5],
+    course: courses[5],
     professor: "Philosifus Siebrand",
     seatsAvailable: 28,
     days: "THF",
@@ -136,7 +137,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
-    course: COURSES[2],
+    course: courses[2],
     professor: "Phoebe Chabon",
     seatsAvailable: 28,
     days: "THF",
@@ -144,7 +145,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
-    course: COURSES[3],
+    course: courses[3],
     professor: "Sycily Soule",
     seatsAvailable: 28,
     days: "THF",
@@ -152,7 +153,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
-    course: COURSES[4],
+    course: courses[4],
     professor: "Heldebald Cincebeaux",
     seatsAvailable: 28,
     days: "THF",
@@ -160,7 +161,7 @@ const COURSE_CATALOG = [
   },
   {
     classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
-    course: COURSES[5],
+    course: courses[5],
     professor: "Gerlinda Weinschroot",
     seatsAvailable: 28,
     days: "THF",
