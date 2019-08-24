@@ -6,31 +6,29 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { appRoutes } from "./routes";
 import { AppComponent } from "./app.component";
-import { NavBarComponent } from "./nav-bar.component";
 import { CatalogComponent } from "./catalog/catalog.component";
 import { RegisterComponent } from "./users/register.component";
 import { SignInComponent } from "./users/sign-in.component";
 import { LoadingSpinnerComponent } from "./components/loading-spinner.component";
 import { UserRepositoryService } from "./services/user-repository.services";
-import { AccountMenuComponent } from "./account-menu.component";
 import { CatalogRepositoryService } from "./catalog/catalog-repository.service";
+import { CoreModule } from "./core/core.module";
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
+    CoreModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
     AppComponent,
-    NavBarComponent,
     CatalogComponent,
     RegisterComponent,
     SignInComponent,
-    LoadingSpinnerComponent,
-    AccountMenuComponent
+    LoadingSpinnerComponent
   ],
   providers: [UserRepositoryService, CatalogRepositoryService],
   bootstrap: [AppComponent]
