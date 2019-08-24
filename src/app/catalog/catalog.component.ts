@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { DataRepositoryService } from "../services/data-repository.services"
+import { UserRepositoryService } from "../services/user-repository.services"
 
 @Component({
   styleUrls: ['catalog.component.css'],
@@ -10,7 +10,7 @@ export class CatalogComponent {
   classes:any[];
   visibleClasses:any[];
 
-  constructor(private dataRepository:DataRepositoryService) {}
+  constructor(private dataRepository:UserRepositoryService) {}
 
   ngOnInit() {
     this.dataRepository.getCatalog()

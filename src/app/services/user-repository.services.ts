@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class DataRepositoryService {
+export class UserRepositoryService {
   currentUser:any;
 
   constructor() {}

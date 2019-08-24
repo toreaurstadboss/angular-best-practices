@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'
 
-import { DataRepositoryService } from '../services/data-repository.services'
+import { UserRepositoryService } from '../services/user-repository.services'
 
 @Component({
   styles: [`
@@ -74,7 +74,7 @@ import { DataRepositoryService } from '../services/data-repository.services'
 export class SignInComponent {
   credentials:any = {};
 
-  constructor(private router:Router, private dataRepository:DataRepositoryService) { }
+  constructor(private router:Router, private dataRepository:UserRepositoryService) { }
 
   signIn(credentials:any) {
     this.dataRepository.signIn(credentials)

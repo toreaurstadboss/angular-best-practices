@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
 
-import { DataRepositoryService } from '../services/data-repository.services'
+import { UserRepositoryService } from '../services/user-repository.services'
 
 @Component({
   styleUrls: ['./register.css'],
@@ -16,7 +16,7 @@ export class RegisterComponent {
   password: FormControl;
   saving = false;
 
-  constructor(private router: Router, private dataRepository: DataRepositoryService) { }
+  constructor(private router: Router, private dataRepository: UserRepositoryService) { }
 
   ngOnInit() {
     this.firstName = new FormControl('', Validators.required);

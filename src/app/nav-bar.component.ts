@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { DataRepositoryService } from "./services/data-repository.services";
+import { UserRepositoryService } from "./services/user-repository.services";
 
 @Component({
   selector: 'nav-bar',
@@ -15,7 +15,7 @@ import { DataRepositoryService } from "./services/data-repository.services";
 })
 
 export class NavBarComponent  {
-  constructor(private dataRepository:DataRepositoryService) {}
+  constructor(private dataRepository:UserRepositoryService) {}
 
   get currentUser() {
     return this.dataRepository.currentUser;
