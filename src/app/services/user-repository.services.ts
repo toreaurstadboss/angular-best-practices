@@ -6,20 +6,16 @@ import 'rxjs/add/operator/map';
 export class UserRepositoryService {
   currentUser:any;
 
-  constructor() {}
-
-  getCatalog():Observable<any[]> {
-    const subject = new Subject<any>();
-    const currentUser = this.currentUser || {classes:[]};
-    const catalogWithEnrollmentStatus =
-      COURSE_CATALOG.map(catalogClass => {
-        let enrolled = {enrolled: currentUser.classes.includes(catalogClass.classId)};
-        return Object.assign(catalogClass, enrolled);
-      });
-    setTimeout(() => {subject.next(catalogWithEnrollmentStatus); subject.complete();}, 200);
-
-    return subject;
+  constructor() {
+    this.currentUser = {
+      userId: 'e61aebed-dbc5-437a-b514-02b8380d8efc',
+      firstName: 'Jim',
+      lastName: 'Cooper',
+      email: 'me@whitebeards.edu',
+      classes: ['24ab7b14-f935-44c1-b91b-8598123ea54a']
+    };
   }
+
 
   saveUser(user): Observable<any> {
     user.classes = user.classes || [];

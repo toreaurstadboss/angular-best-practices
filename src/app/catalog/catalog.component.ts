@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
 import { UserRepositoryService } from "../services/user-repository.services"
+import { CatalogRepositoryService } from './catalog-repository.service';
 
 @Component({
   styleUrls: ['catalog.component.css'],
@@ -10,16 +10,19 @@ export class CatalogComponent {
   classes:any[];
   visibleClasses:any[];
 
-  constructor(private dataRepository:UserRepositoryService) {}
+  constructor(private userRepository:UserRepositoryService, private catalogService: CatalogRepositoryService) {}
 
   ngOnInit() {
-    this.dataRepository.getCatalog()
-      .subscribe(classes => { this.classes = classes; this.applyFilter('')});
+    this.catalogService.getCatalog()
+      .subscribe(classes => {
+        //debugger
+        this.classes = classes; this.applyFilter('')
+      });
   }
 
   enroll(classToEnroll) {
     classToEnroll.processing = true;
-    this.dataRepository.enroll(classToEnroll.classId)
+    this.userRepository.enroll(classToEnroll.classId)
       .subscribe(
         null,
         (err) => {console.error(err); classToEnroll.processing = false}, //add a toast message or something
@@ -29,7 +32,7 @@ export class CatalogComponent {
 
   drop(classToDrop) {
     classToDrop.processing = true;
-    this.dataRepository.drop(classToDrop.classId)
+    this.userRepository.drop(classToDrop.classId)
       .subscribe(
         null,
         (err) => { console.error(err); classToDrop.processing = false}, //add a toast message or something
