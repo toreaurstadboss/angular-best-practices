@@ -1,23 +1,25 @@
-import { Injectable } from "@angular/core";
-import { Observable, Subject } from "rxjs/Rx";
-import "rxjs/add/operator/map";
-import { UserRepositoryService } from "app/services/user-repository.services";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+
+import 'rxjs/add/operator/map';
+import { UserRepositoryService } from 'app/services/user-repository.services';
 
 @Injectable()
 export class CatalogRepositoryService {
-
-
-  constructor(private userRepositoryService: UserRepositoryService) {
-
-  }
+  constructor(private userRepositoryService: UserRepositoryService) {}
 
   getCatalog(): Observable<any[]> {
     // debugger;
     const subject = new Subject<any>();
-    const currentUser = this.userRepositoryService.currentUser || {classes:[]};
+    const currentUser = this.userRepositoryService.currentUser || {
+      classes: []
+    };
     const catalogWithEnrollmentStatus = courseCatalog.map(catalogClass => {
-      let enrolled = {
-        enrolled: this.userRepositoryService.currentUser.classes.includes(catalogClass.classId)
+      const enrolled = {
+        enrolled: this.userRepositoryService.currentUser.classes.includes(
+          catalogClass.classId
+        )
       };
       return Object.assign(catalogClass, enrolled);
     });
@@ -32,139 +34,138 @@ export class CatalogRepositoryService {
 
 export const courses = [
   {
-    courseNumber: "PO101",
-    courseName: "Intro to Potions",
+    courseNumber: 'PO101',
+    courseName: 'Intro to Potions',
     creditHours: 3,
-    description: "..."
+    description: '...'
   },
   {
-    courseNumber: "HIS105",
-    courseName: "Ancient History of Magic",
+    courseNumber: 'HIS105',
+    courseName: 'Ancient History of Magic',
     creditHours: 4,
-    description: "..."
+    description: '...'
   },
   {
-    courseNumber: "CH101",
-    courseName: "Intro to Charms",
+    courseNumber: 'CH101',
+    courseName: 'Intro to Charms',
     creditHours: 4,
-    description: "..."
+    description: '...'
   },
   {
-    courseNumber: "CH205",
-    courseName: "Creating Advanced Charms",
+    courseNumber: 'CH205',
+    courseName: 'Creating Advanced Charms',
     creditHours: 4,
-    description: "..."
+    description: '...'
   },
   {
-    courseNumber: "SP101",
-    courseName: "Intro Spell Casting",
+    courseNumber: 'SP101',
+    courseName: 'Intro Spell Casting',
     creditHours: 4,
-    description: "..."
+    description: '...'
   },
   {
-    courseNumber: "SP201",
-    courseName: "Advanced Spell Casting",
+    courseNumber: 'SP201',
+    courseName: 'Advanced Spell Casting',
     creditHours: 4,
-    description: "..."
+    description: '...'
   }
 ];
 
-
 const courseCatalog = [
   {
-    classId: "24ab7b14-f935-44c1-b91b-8598123ea54a",
+    classId: '24ab7b14-f935-44c1-b91b-8598123ea54a',
     course: courses[0],
-    professor: "Abramius Darksbayn",
+    professor: 'Abramius Darksbayn',
     seatsAvailable: 23,
-    days: "MWF",
+    days: 'MWF',
     time: 11
   },
   {
-    classId: "cebbc5ba-f49a-4708-b3dc-51a346b3231e",
+    classId: 'cebbc5ba-f49a-4708-b3dc-51a346b3231e',
     course: courses[0],
-    professor: "Philosifus Siebrand",
+    professor: 'Philosifus Siebrand',
     seatsAvailable: 9,
-    days: "MWF",
+    days: 'MWF',
     time: 12
   },
   {
-    classId: "6130cdd4-071a-4559-8072-35f0fbec5516",
+    classId: '6130cdd4-071a-4559-8072-35f0fbec5516',
     course: courses[0],
-    professor: "Abramius Darksbayn",
+    professor: 'Abramius Darksbayn',
     seatsAvailable: 14,
-    days: "THF",
+    days: 'THF',
     time: 2
   },
   {
-    classId: "dd0343e9-50b2-4f1d-8b87-93c0b34f3d35",
+    classId: 'dd0343e9-50b2-4f1d-8b87-93c0b34f3d35',
     course: courses[1],
-    professor: "Antonia Clavell",
+    professor: 'Antonia Clavell',
     seatsAvailable: 28,
-    days: "THF",
+    days: 'THF',
     time: 11
   },
   {
-    classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
+    classId: '7277956e-795f-4c0f-9861-cf03635df5ea',
     course: courses[2],
-    professor: "Meriel Dufaux",
+    professor: 'Meriel Dufaux',
     seatsAvailable: 28,
-    days: "THF",
+    days: 'THF',
     time: 11
   },
   {
-    classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
+    classId: '7277956e-795f-4c0f-9861-cf03635df5ea',
     course: courses[3],
-    professor: "Adranus Klaus",
+    professor: 'Adranus Klaus',
     seatsAvailable: 28,
-    days: "THF",
+    days: 'THF',
     time: 11
   },
   {
-    classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
+    classId: '7277956e-795f-4c0f-9861-cf03635df5ea',
     course: courses[4],
-    professor: "Ragnvald Graupnar",
+    professor: 'Ragnvald Graupnar',
     seatsAvailable: 28,
-    days: "THF",
+    days: 'THF',
     time: 11
   },
   {
-    classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
+    classId: '7277956e-795f-4c0f-9861-cf03635df5ea',
     course: courses[5],
-    professor: "Philosifus Siebrand",
+    professor: 'Philosifus Siebrand',
     seatsAvailable: 28,
-    days: "THF",
+    days: 'THF',
     time: 11
   },
   {
-    classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
+    classId: '7277956e-795f-4c0f-9861-cf03635df5ea',
     course: courses[2],
-    professor: "Phoebe Chabon",
+    professor: 'Phoebe Chabon',
     seatsAvailable: 28,
-    days: "THF",
+    days: 'THF',
     time: 11
   },
   {
-    classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
+    classId: '7277956e-795f-4c0f-9861-cf03635df5ea',
     course: courses[3],
-    professor: "Sycily Soule",
+    professor: 'Sycily Soule',
     seatsAvailable: 28,
-    days: "THF",
+    days: 'THF',
     time: 11
   },
   {
-    classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
+    classId: '7277956e-795f-4c0f-9861-cf03635df5ea',
     course: courses[4],
-    professor: "Heldebald Cincebeaux",
+    professor: 'Heldebald Cincebeaux',
     seatsAvailable: 28,
-    days: "THF",
+    days: 'THF',
     time: 11
   },
   {
-    classId: "7277956e-795f-4c0f-9861-cf03635df5ea",
+    classId: '7277956e-795f-4c0f-9861-cf03635df5ea',
     course: courses[5],
-    professor: "Gerlinda Weinschroot",
+    professor: 'Gerlinda Weinschroot',
     seatsAvailable: 28,
-    days: "THF",
+    days: 'THF',
     time: 11
   }
 ];

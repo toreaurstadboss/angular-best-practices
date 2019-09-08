@@ -6,6 +6,9 @@
     "ng": "ng",
     "start": "ng serve -o",
     "build": "ng build",
+    "prodbuild": "ng build --prod",
+    "buildwithstats": "ng b --sourceMap --prod --stats-json",
+    "analyze": "webpack-bundle-analyzer --port 9901 dist/stats.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
