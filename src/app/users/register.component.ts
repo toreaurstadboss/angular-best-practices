@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router'
+import { Component } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
-import { UserRepositoryService } from '../services/user-repository.services'
+import { UserRepositoryService } from "../services/user-repository.services";
 
 @Component({
-  styleUrls: ['./register.css'],
-  templateUrl: './register.component.html'
+  styleUrls: ["./register.css"],
+  templateUrl: "./register.component.html"
 })
 export class RegisterComponent {
   registerForm: FormGroup;
@@ -16,13 +16,16 @@ export class RegisterComponent {
   password: FormControl;
   saving = false;
 
-  constructor(private router: Router, private dataRepository: UserRepositoryService) { }
+  constructor(
+    private router: Router,
+    private dataRepository: UserRepositoryService
+  ) {}
 
   ngOnInit() {
-    this.firstName = new FormControl('', Validators.required);
-    this.lastName = new FormControl('', Validators.required);
-    this.email = new FormControl('', Validators.required);
-    this.password = new FormControl('', Validators.required);
+    this.firstName = new FormControl("", Validators.required);
+    this.lastName = new FormControl("", Validators.required);
+    this.email = new FormControl("", Validators.required);
+    this.password = new FormControl("", Validators.required);
 
     this.registerForm = new FormGroup({
       firstName: this.firstName,
@@ -34,14 +37,20 @@ export class RegisterComponent {
 
   registerUser(user) {
     this.saving = true;
-    this.dataRepository.saveUser(user)
-      .subscribe(
-        null,
-        () => this.saving = false,
-        () => this.router.navigate(['/catalog']));
+    this.saveAndRedirect(user);
   }
 
   cancel() {
-    this.router.navigate(['/']);
+    this.router.navigate(["/"]);
+  }
+
+  private saveAndRedirect(user: any) {
+    this.dataRepository
+      .saveUser(user)
+      .subscribe(
+        null,
+        () => (this.saving = false),
+        () => this.router.navigate(["/catalog"])
+      );
   }
 }

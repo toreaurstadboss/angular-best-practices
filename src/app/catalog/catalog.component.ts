@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 
 import { UserRepositoryService } from "../services/user-repository.services";
 import { CatalogRepositoryService } from "./catalog-repository.service";
@@ -8,7 +8,7 @@ import { FilterClassesService } from "./filter-classes.service";
   styleUrls: ["catalog.component.css"],
   templateUrl: "catalog.component.html"
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit, OnChanges {
   classes: any[];
   visibleClasses: any[];
 
@@ -18,9 +18,11 @@ export class CatalogComponent {
     private filterClassesService: FilterClassesService
   ) {}
 
+  ngOnChanges(changes: SimpleChanges) {}
+
   ngOnInit() {
     this.catalogService.getCatalog().subscribe(classes => {
-      //debugger
+      // debugger
       this.classes = classes;
       this.applyFilter("");
     });
@@ -33,7 +35,7 @@ export class CatalogComponent {
       err => {
         console.error(err);
         classToEnroll.processing = false;
-      }, //add a toast message or something
+      }, // add a toast message or something
       () => {
         classToEnroll.processing = false;
         classToEnroll.enrolled = true;
@@ -48,7 +50,7 @@ export class CatalogComponent {
       err => {
         console.error(err);
         classToDrop.processing = false;
-      }, //add a toast message or something
+      }, // add a toast message or something
       () => {
         classToDrop.processing = false;
         classToDrop.enrolled = false;
@@ -56,10 +58,10 @@ export class CatalogComponent {
     );
   }
 
-  applyFilter(filter){
-    this.visibleClasses = this.filterClassesService.filterClasses(filter, this.classes);
+  applyFilter(filter) {
+    this.visibleClasses = this.filterClassesService.filterClasses(
+      filter,
+      this.classes
+    );
   }
-
-
-
 }
